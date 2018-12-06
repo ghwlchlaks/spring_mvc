@@ -14,10 +14,8 @@ public class ListCommand implements Command {
 	@Override
 	public void execute(Model model) {
 		// TODO Auto-generated method stub
-		
 		Dao dao = new Dao(); //DB접근 객체 생성
 		ArrayList<Dto> dtos=  dao.list(); //DB접근 객체에서 list들을 가져오는 메소드 실행
-		
 		model.addAttribute("list", dtos); //가져온 데이터를 model에 추가 (view(.jsp)에서 속성 접근할때 list로 접근하면 됨) 
 	}
 

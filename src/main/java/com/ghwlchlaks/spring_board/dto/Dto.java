@@ -4,93 +4,105 @@ import java.sql.Timestamp;
 
 //데이터를 객체로 만드는 클래스 
 public class Dto {
-	int Id;
-	String Name;
-	String Title;
-	Timestamp Date;
-	int Hit;
-	int Group;
-	int Step;
-	int Indent;
+	int bId;
+	String bName;
+	String bTitle;
+	String bContents;
+	Timestamp bDate;
+	int bHit;
+	int bGroup;
+	int bStep;
+	int bIndent;
 	
-	public Dto(int Id, String Name, String Title, Timestamp Date, int Hit, int Group, int Step, int Indent) {
-		this.Id =Id;
-		this.Name = Name;
-		this.Title = Title;
-		this.Date = Date;
-		this.Hit = Hit;
-		this.Group = Group;
-		this.Step = Step;
-		this.Indent = Indent;
+	public Dto(int bId, String bName, String bContents, String bTitle, Timestamp bDate, int bHit, int bGroup, int bStep, int bIndent) {
+		this.bId =bId;
+		this.bName = bName;
+		this.bTitle = bTitle;
+		this.bContents = bContents;
+		this.bDate = bDate;
+		this.bHit = bHit;
+		this.bGroup = bGroup;
+		this.bStep = bStep;
+		this.bIndent = bIndent;
 	}
 	
 	public Dto() {
 		
 	}
+
+	public int getbId() {
+		return bId;
+	}
+
+	public void setbId(int bId) {
+		this.bId = bId;
+	}
+
+	public String getbName() {
+		return bName;
+	}
+
+	public void setbName(String bName) {
+		this.bName = bName;
+	}
+
+	public String getbTitle() {
+		return bTitle;
+	}
+
+	public void setbTitle(String bTitle) {
+		this.bTitle = bTitle;
+	}
+
+	public String getbContents() {
+		return bContents;
+	}
+
+	public void setbContents(String bContents) {
+		this.bContents = bContents;
+	}
+
+	public Timestamp getbDate() {
+		return bDate;
+	}
+
+	public void setbDate(Timestamp bDate) {
+		this.bDate = bDate;
+	}
+
+	public int getbHit() {
+		return bHit;
+	}
+
+	public void setbHit(int bHit) {
+		this.bHit = bHit;
+	}
+
+	public int getbGroup() {
+		return bGroup;
+	}
+
+	public void setbGroup(int bGroup) {
+		this.bGroup = bGroup;
+	}
+
+	public int getbStep() {
+		return bStep;
+	}
+
+	public void setbStep(int bStep) {
+		this.bStep = bStep;
+	}
+
+	public int getbIndent() {
+		return bIndent;
+	}
+
+	public void setbIndent(int bIndent) {
+		this.bIndent = bIndent;
+	}
 	
-	public int getId() {
-		return Id;
-	}
-
-	public void setId(int id) {
-		Id = id;
-	}
-
-	public String getName() {
-		return Name;
-	}
-
-	public void setName(String name) {
-		Name = name;
-	}
-
-	public String getTitle() {
-		return Title;
-	}
-
-	public void setTitle(String title) {
-		Title = title;
-	}
-
-	public Timestamp getDate() {
-		return Date;
-	}
-
-	public void setDate(Timestamp date) {
-		Date = date;
-	}
-
-	public int getHit() {
-		return Hit;
-	}
-
-	public void setHit(int hit) {
-		Hit = hit;
-	}
-
-	public int getGroup() {
-		return Group;
-	}
-
-	public void setGroup(int group) {
-		Group = group;
-	}
-
-	public int getStep() {
-		return Step;
-	}
-
-	public void setStep(int step) {
-		Step = step;
-	}
-
-	public int getIndent() {
-		return Indent;
-	}
-
-	public void setIndent(int indent) {
-		Indent = indent;
-	}
+	
 	
 	
 }
