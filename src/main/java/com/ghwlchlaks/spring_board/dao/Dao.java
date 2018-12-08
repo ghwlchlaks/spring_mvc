@@ -54,7 +54,7 @@ public class Dao {
 				int bStep = resultSet.getInt("bStep");
 				int bIndent = resultSet.getInt("bIndent");
 				
-				Dto dto = new Dto(bId, bName, bTitle, bContents, bDate, bHit, bGroup, bStep, bIndent);
+				Dto dto = new Dto(bId, bName,bContents, bTitle, bDate, bHit, bGroup, bStep, bIndent);
 				dtos.add(dto);
 			}
 			
@@ -96,6 +96,79 @@ public class Dao {
 				if(connection != null) connection.close();
 			} catch(Exception e2) {
 				e2.printStackTrace();
+			}
+		}
+	}
+	public Dto contentView(String strId) {
+		// TODO Auto-generated method stub
+		
+		upHit(strId);
+		
+		Dto dto = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "select * from mvc_board where bId = ?";
+			preparedStatement = connection.prepareStatement(query);
+			//preparedStatement.setInt(1, Integer.parseInt(strId));
+			preparedStatement.setString(1, strId);
+			resultSet = preparedStatement.executeQuery();
+			
+			if (resultSet.next()) {
+				int bId = resultSet.getInt("bId");
+				String bName = resultSet.getString("bName");
+				String bTitle = resultSet.getString("bTitle");
+				String bContents = resultSet.getString("bContents");
+				Timestamp bDate = resultSet.getTimestamp("bDate");
+				int bHit = resultSet.getInt("bHit");
+				int bGroup = resultSet.getInt("bGroup");
+				int bStep = resultSet.getInt("bStep");
+				int bIndent = resultSet.getInt("bIndent");
+				
+				dto = new Dto(bId, bName, bContents, bTitle, bDate, bHit, bGroup, bStep, bIndent);
+				
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(connection != null) connection.close();
+				if(preparedStatement != null) preparedStatement.close();
+			}catch (Exception e1) {
+				// TODO: handle exception
+				e1.printStackTrace();
+			}
+		}
+		return dto;
+	}
+	private void upHit(String strId) {
+		// TODO Auto-generated method stub
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "update mvc_board set bHit = bHit +1 where bId = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, strId);
+			
+			int rn = preparedStatement.executeUpdate();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e1) {
+				// TODO: handle exception
+				e1.printStackTrace();
 			}
 		}
 	}
