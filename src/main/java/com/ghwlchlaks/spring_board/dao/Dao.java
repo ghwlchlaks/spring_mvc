@@ -53,7 +53,7 @@ public class Dao {
 				int bGroup = resultSet.getInt("bGroup");
 				int bStep = resultSet.getInt("bStep");
 				int bIndent = resultSet.getInt("bIndent");
-				
+				System.out.println(bId);
 				Dto dto = new Dto(bId, bName,bContents, bTitle, bDate, bHit, bGroup, bStep, bIndent);
 				dtos.add(dto);
 			}
@@ -171,5 +171,57 @@ public class Dao {
 				e1.printStackTrace();
 			}
 		}
+	}
+	public void modify(String bId, String bName, String bTitle, String bContents) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "update mvc_board set bName = ?, bTitle = ?, bContents = ? where bId = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, bName);
+			preparedStatement.setString(2, bTitle);
+			preparedStatement.setString(3, bContents);
+			preparedStatement.setInt(4, Integer.parseInt(bId));
+			int rn = preparedStatement.executeUpdate();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement !=null) preparedStatement.close();
+			} catch (Exception e1) {
+				// TODO: handle exception
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	public void delete(String bId) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "delete from mvc_board where bId = ?";
+			preparedStatement.setInt(1, Integer.parseInt(bId));
+			preparedStatement = connection.prepareStatement(query);
+			int rn = preparedStatement.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+			} catch (Exception e1) {
+				// TODO: handle exception
+				e1.printStackTrace();
+			}
+		}
+		
 	}
 }
