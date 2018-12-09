@@ -124,7 +124,7 @@ public class controller {
 	//ªË¡¶
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request, Model model) {
-		System.out.println("reply()");
+		System.out.println("delete()");
 		
 		model.addAttribute("request", request);
 		command = new DeleteCommand();

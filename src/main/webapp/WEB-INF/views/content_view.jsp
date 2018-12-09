@@ -34,7 +34,12 @@ request.setCharacterEncoding("UTF-8");
 				<td><input type="text" name="bContents" value="${content_view.bContents}"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="수정">&nbsp;&nbsp; <a href="list">목록보기</a>&nbsp;&nbsp; <a href="delete?bId=${content_view.bId}">삭제</a> &nbsp;&nbsp;<a href="reply_view?bId=${content_view.bId}">댓글</a></td>
+				<td colspan="2">
+				<input type="submit" value="수정">&nbsp;&nbsp; 
+				<a href="list">목록보기</a>&nbsp;&nbsp; 
+				<a href="delete?bId=${content_view.bId}">삭제</a> &nbsp;&nbsp;
+				<%-- <a href="reply_view?bId=${content_view.bId}">댓글</a> --%>
+				</td>
 			</tr>
 		</form>
 	</table>

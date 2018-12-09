@@ -53,7 +53,6 @@ public class Dao {
 				int bGroup = resultSet.getInt("bGroup");
 				int bStep = resultSet.getInt("bStep");
 				int bIndent = resultSet.getInt("bIndent");
-				System.out.println(bId);
 				Dto dto = new Dto(bId, bName,bContents, bTitle, bDate, bHit, bGroup, bStep, bIndent);
 				dtos.add(dto);
 			}
@@ -206,8 +205,8 @@ public class Dao {
 		try {
 			connection = dataSource.getConnection();
 			String query = "delete from mvc_board where bId = ?";
-			preparedStatement.setInt(1, Integer.parseInt(bId));
 			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(bId));
 			int rn = preparedStatement.executeUpdate();
 			
 		} catch (Exception e) {
