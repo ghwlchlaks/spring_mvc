@@ -23,7 +23,7 @@ request.setCharacterEncoding("UTF-8");
 				<td>${dtos.bId}</td>
 				<td>${dtos.bName}</td>
 				<td>
-					<c:forEach begin="1" end="${dtos.bIndent}"></c:forEach>
+					<c:forEach begin="1" end="${dtos.bIndent}">-</c:forEach>
 					<a href="content_view?bId=${dtos.bId}">${dtos.bTitle}</a>
 				</td>
 				<td>${dtos.bDate}</td>
