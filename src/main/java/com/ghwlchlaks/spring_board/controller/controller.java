@@ -6,6 +6,8 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,26 +21,21 @@ import com.ghwlchlaks.spring_board.command.ModifyCommand;
 import com.ghwlchlaks.spring_board.command.ReplyCommand;
 import com.ghwlchlaks.spring_board.command.ReplyViewCommand;
 import com.ghwlchlaks.spring_board.command.WriteCommand;
+import com.ghwlchlaks.spring_board.util.Constant;
 
 //anotation(@)을 이용한 request mapping하는 클래스
 @Controller
 public class controller {
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
-
 	//interface라서 해당 interface를 포함하고 있는 클래스를 모두 포함한 효과 (상위 클래스이므로)
 	Command command;
+	public JdbcTemplate template;
+	
+	@Autowired
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+		Constant.template = this.template;
+	}
 	
 	//리스트를 보여주는 mapping
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
